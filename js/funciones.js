@@ -59,7 +59,7 @@ const empty = object =>{
 //Retonamos el objeto de neustra bd para poderla manipular
 export default contactbd;
 //Cada función creada se retorna
-export {guardar,consultar, crearEtiqueta }
+export {guardar}
 
 /*Al exportar objetos y funciones puden ser usadas por los componentes
 que importen este archivo*/ 
