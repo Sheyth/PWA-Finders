@@ -25,7 +25,7 @@ const mensaje_cliente = document.getElementById("mensaje");
 tabla cuando no tengamos productos para mostrar*/
 const mesajeSinRegistros = document.getElementById("siRegistros");
 //Objetos para acceder a los botones del formulario
-const btGuardar=document.getElementById("submitButton");
+const btGuardar=document.getElementById("guardar");
 
 
 
