@@ -1,5 +1,5 @@
 //importamos el achivo de funciones y accedemos al objeto de la bd y funciones
-import contactbd, {guardar,consultar} from './funciones.js';
+import contactbd, {guardar} from './funciones.js';
 
 /*Al cargar por primera vez el sitio debemos crear la bd,
 empleamos la función de tindabd para crear la base de datos tienda
@@ -98,104 +98,6 @@ btModificar.onclick=(evento)=>{
     }
 }
 
-
-/*Evento click para ejecutar el borrado de la base de datos, 
-se activa al presionar el boton limpiar BD  del formulario*/
-btEliminarTodo.onclick=()=>{
-    //Elimianmos la BD
-       bd.delete();
-       //La creamos nuevamente, al igual que la tabla
-       bd=contactbd("Contacto", {clientes:`++id,nombre, email, telefono, mensaje`});
-       //abrimos la nueva bd
-       bd.open();
-       //Recargamos la vista
-       location.reload();
-      
-}
-
-/*Función que agrega a la tabla cada producto registrado */
-function cargarTabla(){
-    //Recuperamos el objeto de la tabla que modificaremos
-    const tbody =document.getElementById("tbody");
-    /*Si la tabla ya tiene algo, la limpiamo de lo 
-    contrario se duplicarían los registros*/
-    while(tbody.hasChildNodes()){
-        tbody.removeChild(tbody.firstChild);
-    }
-    /*Ejecutamos la función de consultar del archivo de funciones
-    la cual recibe la lista de productos*/
-    consultar(bd.productos,(productos)=>{
-       //Si existen productos
-        if (productos){
-            /*Esta variable muesta el texto cuando no hay productos
-            cuando hay debemos limpiar el mensaje*/
-            mesajeSinRegistros.textContent="";
-            /*Empleamos la función crearEtiqueta del archivo de funciones
-            crearemos una nueva fila para la tabla*/
-            crearEtiqueta("tr",tbody, (tr)=>{
-                //Recorremos cada producto consultado
-              for(const atributo in productos){
-                //Crearemos una  columna para cada atributo de el producto evaluado por el for
-                crearEtiqueta("td",tr, (td)=>{
-                /*Asignamos el valor de cada atributo del producto a la nueva columna
-                la validación indica que si el campo es el de precio se le agrege un signo de $*/
-                  td.textContent =productos.precio===productos[atributo]?`$ ${productos[atributo]}`:productos[atributo];
-                })
-            }
-            //Creamos una nueva columna  para el icono de lapiz para modificar
-            crearEtiqueta("td",tr, (td)=>{
-                crearEtiqueta("i",td, (i)=>{
-                i.className += "icon-pencil";
-                //Le asignamos como identificador la calve del producto del renglón
-                i.setAttribute(`data-id`,productos.id);
-                //Indicamos que si precionamos el lapiz se activa la función btnEditar
-                i.onclick=btnEditar;
-                })
-        })
-        //Creamos una nueva columna  para el icono de menos para eliminar
-            crearEtiqueta("td",tr, (td)=>{
-            crearEtiqueta("i",td, (i)=>{
-            i.className += "icon-minus";
-            //Le asignamos como identificador la calve del producto del renglón
-            i.setAttribute(`data-id`,productos.id);
-            //Indicamos que si precionamos el lapiz se activa la función btnEliminar
-            i.onclick=btnEliminar;
-            })
-        })
-        })
-        }else{
-            //Si no hay productos registrados mostramos el mensaje bajo el encabezado de la tabla
-            mesajeSinRegistros.textContent="No existen clientes registrados";
-        }
-})
-
-}
-//Función que se activa al presionar el icono de lapiz de un renglón de la tabla
-function btnEditar(evento) {
-    //Recuperamos el identificador del renglón que es la clave del producto
-    let id=parseInt(evento.target.dataset.id);
-   //Realizamos una consulta del producto que tiene la clave recuperada
-    bd.productos.get(id, cliente=>{
-    //Asignamos al formulario el valor correspondiente del producto seleccionado
-      clave_cliente.value=cliente.id||0;
-      nombre_cliente.value=cliente.nombre||"";
-      email_cliente.value=cliente.email||"";
-      telefono_cliente.value=cliente.telefono||"";
-      mensaje_cliente.value=cliente.mensaje||"";
-
-    })
-}
- //Función que se activa al presionar el icono de menos de un renglón de la tabla
-   function btnEliminar(evento) {
-    /*Recuperamos el identificador del renglón que es la clave del producto
-    el id al ser autoincremental es entero debemos realizar el cambio de texto a int*/
-    let id=parseInt(evento.target.dataset.id);
-    //Eliminamos el registro con el ide recuperado
-    bd.productos.delete(id);
-    //Actualizamos la tabla
-    cargarTabla();
-    
-}
 
 
 
