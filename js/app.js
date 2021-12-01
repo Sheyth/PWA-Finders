@@ -1,4 +1,6 @@
-
+if ( navigator.serviceWorker ) {
+    navigator.serviceWorker.register('PWA-Finders/sw.js');
+}
 //obtenemos la url del servidor
 var url=window.location.href;
 //definimos que nuestro sw.js se encuentra en el repositorio
