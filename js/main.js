@@ -21,13 +21,8 @@ const email_cliente = document.getElementById("email");
 const telefono_cliente = document.getElementById("telefono");
 const mensaje_cliente = document.getElementById("mensaje");
 
-/*Objeto para acceder a etiqueta que nos mostrará un mesaje en la 
-tabla cuando no tengamos productos para mostrar*/
-const mesajeSinRegistros = document.getElementById("siRegistros");
 //Objetos para acceder a los botones del formulario
 const btGuardar=document.getElementById("guardar");
-
-
 
 //Evento que se ejecuta al abrir la página
 window.onload=() =>{

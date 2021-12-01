@@ -313,45 +313,51 @@
                     <h2 class="section-heading text-uppercase">Contactanos</h2>
                     <h3 class="section-subheading text-muted">Para mas informacion no dudes en contactarnos llenando el siguiente formulario</h3>
                 </div>
-                <form role="form">
-                    <div class="block">
-                      <h6 class="heading-hr">Contacto</h6>
-            
-                      <div class="form-group">
-                        <label>Clave:</label>
-                        <input type="text" class="form-control" id="clave" readonly />
-                      </div>
-            
-                      <div class="form-group">
-                        <label>Nombre:</label>
-                        <input type="text" class="form-control" id="nombre" />
-                      </div>
-            
-                      <div class="form-group">
-                        <label>Email:</label>
-                        <input type="text" class="form-control" id="Email" />
-                      </div>
-            
-                      <div class="form-group">
-                        <label>Telefono:</label>
-                        <input type="text" class="form-control" id="Telefono" />
-                      </div>
-
-                      <div class="form-group">
-                        <label>Mensaje:</label>
-                        <input type="text" class="form-control" id="Mensaje" />
-                      </div>
-            
-                      <div class="form-actions text-right">
-                        <input
-                          type="button"
-                          value="Guardar"
-                          class="btn btn-success"
-                          id="guardar"
-                        />
-                      </div>
+                <form id="contactForm">
+                    <div class="row align-items-stretch mb-5">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- Name input-->
+                                <input class="form-control" id="name" type="text" placeholder="Nombre" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un nombre</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Email address input-->
+                                <input class="form-control" id="email" type="email" placeholder="Email" data-sb-validations="required,email" />
+                                <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere un Email</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email no valido</div>
+                            </div>
+                            <div class="form-group mb-md-0">
+                                <!-- Phone number input-->
+                                <input class="form-control" id="phone" type="tel" placeholder="Telefono" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">Se requiere numero de telefono</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-textarea mb-md-0">
+                                <!-- Message input-->
+                                <textarea class="form-control" id="message" placeholder="Mensaje" data-sb-validations="required"></textarea>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">Se requiere mensaje</div>
+                            </div>
+                        </div>
                     </div>
-                  </form>
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center text-white mb-3">
+                            <div class="fw-bolder">Registro completo!</div>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error al enviar mensaje</div></div>
+                    <!-- Submit Button-->
+                    <div class="text-center"><button class="btn btn-success" id="guardar" type="button">Enviar</button></div>
+                </form>
             </div>
         </section>
         <!-- Footer-->
