@@ -16,13 +16,13 @@ los id de la etiqueta html*/
 
 //Objetos para acceder a lso input del formulario
 const clave_cliente = document.getElementById("clave");
-const nombre_cliente = document.getElementById("nombre");
+const nombre_cliente = document.getElementById("name");
 const email_cliente = document.getElementById("email");
-const telefono_cliente = document.getElementById("telefono");
-const mensaje_cliente = document.getElementById("mensaje");
+const telefono_cliente = document.getElementById("phone");
+const mensaje_cliente = document.getElementById("message");
 
 //Objetos para acceder a los botones del formulario
-const btGuardar=document.getElementById("guardar");
+const btGuardar=document.getElementById("submitButton");
 
 //Evento que se ejecuta al abrir la página
 window.onload=() =>{
