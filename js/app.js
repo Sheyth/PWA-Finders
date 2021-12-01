@@ -1,10 +1,10 @@
 if ( navigator.serviceWorker ) {
-    navigator.serviceWorker.register('PWA-Finders\sw.js');
+    navigator.serviceWorker.register('\sw.js');
 }
 //obtenemos la url del servidor
 var url=window.location.href;
 //definimos que nuestro sw.js se encuentra en el repositorio
-var ubicacionSw='PWA-Finders/sw.js';
+var ubicacionSw='PWA-Finders\sw.js';
 if ( navigator.serviceWorker ) {
 /*Para que nuestro proyecto siga funcionando en localhost
 como en el servidor realizaremos una validación si la url
