@@ -5,7 +5,7 @@ import contactbd, {guardar} from './funciones.js';
 empleamos la función de tindabd para crear la base de datos tienda
 y la tabla de productos, para crear la tabla debemos indicar los atributos
 ++id indica que el id es auto incremental*/
-let bd=contactbd("Contacto", {cliente:`++id,name, email, phone, message`});
+let bd=contactbd("Contacto", {cliente:`++id, name, email, phone, message`});
 
 
 /*Genermaos un objeto para cada elemento del formulario que
